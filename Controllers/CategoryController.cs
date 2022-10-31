@@ -27,9 +27,9 @@ public class CategoryController : ControllerBase
 
             return Ok(new ResultViewModel<List<Category>>(categories));
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            return StatusCode(500, new ResultViewModel<List<Category>>("05XE1 - Falha interna no servidor"));
+            return StatusCode(500, new ResultViewModel<List<Category>>("05XE1 - Falha interna no servidor" + Environment.NewLine + "Stack Trace: " + e.StackTrace + Environment.NewLine + "Mensagem: " + e.Message));
         }
     }
         
